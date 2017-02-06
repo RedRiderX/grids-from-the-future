@@ -33,6 +33,10 @@
       
       <div class="option-group">
         <header>Grid Item</header>
+        <div class="option">
+          # of grid items: <button name="more-grid-item">+</button> <button name="less-grid-item">-</button>
+        </div>
+        
         <div class="grid-item-options">
           <header>Grid Item A</header>
           <div class="option">
@@ -82,51 +86,14 @@
     </div>
     
     <div class="canvas">
-      <div class="grid-wrapper" >
-        
-        <div class="grid shadow">
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-          <div class="item">&nbsp;</div>
-        </div>
-        
-        <div class="grid">
-          <div class="item item-a">
-            <h3>Item A</h3>
-            <p>Aut totam soluta quae ea expedita ea perspiciatis. Rerum placeat doloribus natus error quasi a.</p>
-          </div>
-          <div class="item item-b">
-            <h3>Item B</h3>
-            <p>Nihil qui doloremque voluptatibus dolore sapiente laboriosam nostrum repellat. Fugiat recusandae neque adipisci perferendis voluptates quisquam incidunt eos. Odit aliquam quibusdam voluptas eum.</p>
-          </div>
-          <div class="item item-c">
-            <h3>Item C</h3>
-            <p>Odio sed ut quae quod. Et minus iste eum dolor. Excepturi quae doloribus et dolores molestias.</p>
-          </div>
-        </div>
-
+      <div class="grid-wrapper">
+        <grid
+          v-bind:grid="grid"
+          v-bind:grid-items="gridItems">
+        </grid>
+        <shadow-grid
+          v-bind:grid="grid">
+        </shadow-grid>
       </div>
     </div>
   </main>
@@ -137,7 +104,38 @@
     </a>
     <span>Made with 💻 by RedRiderX</span>
   </footer>
-
+  
+  <script type="text/x-template" id="grid-item-template">
+      <div
+        v-bind:style="itemStyles">
+        <h3>Item {{ item.index.toUpperCase() }}</h3>
+        <p contenteditable>Aut totam soluta quae ea expedita ea perspiciatis. Rerum placeat doloribus natus error quasi a.</p>
+      </div>
+    </div>
+  </script>
+  
+  <script type="text/x-template" id="grid-template">
+    <div 
+      class="grid"
+      v-bind:style="gridStyles">
+      <grid-item
+        class="item"
+        v-for="item in gridItems"
+        v-bind:item="item">
+      </grid-item>
+    </div>
+  </script>
+  
+  <script type="text/x-template" id="shadow-grid-template">
+    <div class="grid shadow">
+      <div
+        class="item"
+        v-for="n in totalPossibleItems">
+        &nbsp;
+      </div>
+    </div>
+  </script>
+  
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="/client.js"></script>
 </body>
