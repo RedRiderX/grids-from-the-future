@@ -21,65 +21,66 @@
       <div class="option-group">
         <header>Grid Container</header>
         <div class="option">
-          grid-template-columns: <input type="text" name="grid-template-columns">
+          grid-template-columns: 
+          <input
+            type="text"
+            v-model="grid['grid-template-columns']">
         </div>
         <div class="option">
-          grid-template-rows: <input type="text" name="grid-template-rows">
+          grid-template-rows:
+          <input
+            type="text"
+            v-model="grid['grid-template-rows']">
         </div>
         <div class="option">
-          grid-gap: <input type="text" name="grid-gap">
+          grid-gap:
+          <input
+            type="text"
+            v-model="grid['grid-gap']">
         </div>
       </div>
       
       <div class="option-group">
         <header>Grid Item</header>
         <div class="option">
-          # of grid items: <button name="more-grid-item">+</button> <button name="less-grid-item">-</button>
+          # of grid items:
+          <button 
+            v-on:click="addGridItem">
+            +
+          </button>
+          <button
+            v-on:click="removeGridItem">
+            -
+          </button>
         </div>
         
-        <div class="grid-item-options">
-          <header>Grid Item A</header>
+        <div
+          class="grid-item-options"
+          v-for="item in gridItems">
+          <header>Grid Item {{ item.index.toUpperCase() }}</header>
           <div class="option">
-            grid-column-start: <input type="text" name="grid-column-start">
+            grid-column-start:
+            <input
+              type="text"
+              v-model="item['grid-column-start']">
           </div>
           <div class="option">
-            grid-column-end: <input type="text" name="grid-column-end">
+            grid-column-end:
+            <input
+              type="text"
+              v-model="item['grid-column-end']">
           </div>
           <div class="option">
-            grid-row-start: <input type="text" name="grid-row-start">
+            grid-row-start: 
+            <input
+              type="text"
+              v-model="item['grid-row-start']">
           </div>
           <div class="option">
-            grid-row-end: <input type="text" name="grid-row-end">
-          </div>
-        </div>
-        <div class="grid-item-options">
-          <header>Grid Item B</header>
-          <div class="option">
-            grid-column-start: <input type="text" name="grid-column-start">
-          </div>
-          <div class="option">
-            grid-column-end: <input type="text" name="grid-column-end">
-          </div>
-          <div class="option">
-            grid-row-start: <input type="text" name="grid-row-start">
-          </div>
-          <div class="option">
-            grid-row-end: <input type="text" name="grid-row-end">
-          </div>
-        </div>
-        <div class="grid-item-options">
-          <header>Grid Item C</header>
-          <div class="option">
-            grid-column-start: <input type="text" name="grid-column-start">
-          </div>
-          <div class="option">
-            grid-column-end: <input type="text" name="grid-column-end">
-          </div>
-          <div class="option">
-            grid-row-start: <input type="text" name="grid-row-start">
-          </div>
-          <div class="option">
-            grid-row-end: <input type="text" name="grid-row-end">
+            grid-row-end: 
+            <input
+              type="text"
+              v-model="item['grid-row-end']">
           </div>
         </div>
       </div>
@@ -109,7 +110,7 @@
       <div
         v-bind:style="itemStyles">
         <h3>Item {{ item.index.toUpperCase() }}</h3>
-        <p contenteditable>Aut totam soluta quae ea expedita ea perspiciatis. Rerum placeat doloribus natus error quasi a.</p>
+        <p contenteditable>{{ item.text }}</p>
       </div>
     </div>
   </script>
@@ -127,7 +128,9 @@
   </script>
   
   <script type="text/x-template" id="shadow-grid-template">
-    <div class="grid shadow">
+    <div
+      class="grid shadow"
+      v-bind:style="gridStyles">
       <div
         class="item"
         v-for="n in totalPossibleItems">

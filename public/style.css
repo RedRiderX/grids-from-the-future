@@ -448,7 +448,7 @@ main {
   width: 100vw;
   max-width: 100%;
   height: 100vh;
-  grid-template-columns: 25rem auto;
+  grid-template-columns: 26rem auto;
   grid-template-rows: 3.2rem auto;
   grid-template-areas:
       "header canvas"
@@ -496,7 +496,8 @@ main {
 }
 
 .option input {
-  width: 3rem;
+  font-family: 'Source Code Pro', monospace;
+  width: 7rem;
 }
 
 .grid-item-options {
@@ -523,11 +524,6 @@ main {
 .grid {
   position: relative;
   display: grid;
-  width: 100%;
-  height: 100%;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 1rem;
 /*   background: lightgreen; */
   z-index: 2;
 }
@@ -559,30 +555,6 @@ main {
 
 .item h3 {
   margin: 0;
-}
-
-.item-a {
-  background: red;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 3;
-}
-
-.item-b {
-  background: green;
-  grid-column-start: 2;
-  grid-column-end: 5;
-  grid-row-start: 2;
-  grid-row-end: 5;
-}
-
-.item-c {
-  background: blue;
-  grid-column-start: 4;
-  grid-column-end: 6;
-  grid-row-start: 4;
-  grid-row-end: 6;
 }
 
 footer {

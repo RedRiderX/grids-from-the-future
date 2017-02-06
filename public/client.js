@@ -54,6 +54,17 @@ Vue.component('shadow-grid', {
       // TODO
       totalPossibleItems: 25
     }
+  },
+  computed: {
+    gridStyles: function() {
+      return {
+        width: this.grid.width,
+        height: this.grid.height,
+        'grid-template-columns': this.grid['grid-template-columns'],
+        'grid-template-rows': this.grid['grid-template-rows'],
+        'grid-gap': this.grid['grid-gap'],
+      };
+    }
   }
 })
 
@@ -76,6 +87,7 @@ var app = new Vue({
         'grid-column-end': '3',
         'grid-row-start': '1',
         'grid-row-end': '3',
+        text: 'Aut totam soluta quae ea expedita ea perspiciatis. Rerum placeat doloribus natus error quasi a.'
       },
       {
         index: 'b',
@@ -84,6 +96,7 @@ var app = new Vue({
         'grid-column-end': '5',
         'grid-row-start': '2',
         'grid-row-end': '5',
+        text: 'Aut totam soluta quae ea expedita ea perspiciatis. Rerum placeat doloribus natus error quasi a.'
       },
       {
         index: 'c',
@@ -92,7 +105,8 @@ var app = new Vue({
         'grid-column-end': '6',
         'grid-row-start': '4',
         'grid-row-end': '6',
-      }      
+        text: 'Aut totam soluta quae ea expedita ea perspiciatis. Rerum placeat doloribus natus error quasi a.'
+      }
     ],
   },
   
@@ -116,6 +130,25 @@ var app = new Vue({
         }
       }
       return key;
+    },
+    
+    addGridItem: function(event) {
+      var lastIndex = this.gridItems[this.gridItems.length - 1].index;
+      this.gridItems.push({
+        index: this.getNextKey(lastIndex),
+        background: '',
+        'grid-column-start': '',
+        'grid-column-end': '',
+        'grid-row-start': '',
+        'grid-row-end': '',
+        text: 'Aut totam soluta'
+      })
+    },
+    
+    removeGridItem: function(event) {
+      if (this.gridItems.length > 1) {
+        this.gridItems.pop();
+      }
     }
   }
 })
