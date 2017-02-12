@@ -49,12 +49,6 @@ Vue.component('shadow-grid', {
   props: [
     'grid',
   ],
-  data: function() {
-    return {
-      // TODO
-      totalPossibleItems: 25
-    }
-  },
   computed: {
     gridStyles: function() {
       return {
@@ -64,6 +58,9 @@ Vue.component('shadow-grid', {
         'grid-template-rows': this.grid['grid-template-rows'],
         'grid-gap': this.grid['grid-gap'],
       };
+    },
+    totalPossibleItems: function() {
+      return this.grid['grid-template-columns'].split(' ').length * this.grid['grid-template-rows'].split(' ').length;
     }
   }
 })

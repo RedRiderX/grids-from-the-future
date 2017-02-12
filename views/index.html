@@ -8,9 +8,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+  <div class="support-warning">
+    <h1>
+      Uh oh.
+    </h1>
+    <p>
+      Looks like your browser doesn't support CSS Grids, so this site probably won't make much sense to you.
+      You can check <a href="http://caniuse.com/#feat=css-grid">Can I Use</a> to find a browser that does 
+      support this feature.
+    </p>
+    <p>
+      If you still want to learn about CSS Grids, check out 
+      <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">this CSS-Tricks guide</a>.
+    </p>
+  </div>
 
   <main>
     <header class="main-header">
@@ -21,22 +36,29 @@
       <div class="option-group">
         <header>Grid Container</header>
         <div class="option">
-          grid-template-columns: 
-          <input
-            type="text"
-            v-model="grid['grid-template-columns']">
+          <label>
+            grid-template-columns: 
+            <input
+              type="text"
+              name="grid-template-columns"
+              v-model="grid['grid-template-columns']">
+          </label>
         </div>
         <div class="option">
-          grid-template-rows:
-          <input
-            type="text"
-            v-model="grid['grid-template-rows']">
+          <label>
+            grid-template-rows:
+            <input
+              type="text"
+              v-model="grid['grid-template-rows']">
+          </label>
         </div>
         <div class="option">
-          grid-gap:
-          <input
-            type="text"
-            v-model="grid['grid-gap']">
+          <label>
+            grid-gap:
+            <input
+              type="text"
+              v-model="grid['grid-gap']">
+          </label>
         </div>
       </div>
       
@@ -59,28 +81,36 @@
           v-for="item in gridItems">
           <header>Grid Item {{ item.index.toUpperCase() }}</header>
           <div class="option">
-            grid-column-start:
-            <input
-              type="text"
-              v-model="item['grid-column-start']">
+            <label>
+              grid-column-start:
+              <input
+                type="text"
+                v-model="item['grid-column-start']">
+            </label>
           </div>
           <div class="option">
-            grid-column-end:
-            <input
-              type="text"
-              v-model="item['grid-column-end']">
+            <label>
+              grid-column-end:
+              <input
+                type="text"
+                v-model="item['grid-column-end']">
+            </label>
           </div>
           <div class="option">
-            grid-row-start: 
-            <input
-              type="text"
-              v-model="item['grid-row-start']">
+            <label>
+              grid-row-start: 
+              <input
+                type="text"
+                v-model="item['grid-row-start']">
+            </label>
           </div>
           <div class="option">
-            grid-row-end: 
-            <input
-              type="text"
-              v-model="item['grid-row-end']">
+            <label>
+              grid-row-end: 
+              <input
+                type="text"
+                v-model="item['grid-row-end']">
+            </label>
           </div>
         </div>
       </div>
@@ -103,7 +133,7 @@
     <a href="https://gomix.com/#!/project/grids-from-the-future">
       Remix this in Gomix
     </a>
-    <span>Made with 💻 by RedRiderX</span>
+    <span>Made with 💻 by RRX</span>
   </footer>
   
   <script type="text/x-template" id="grid-item-template">
